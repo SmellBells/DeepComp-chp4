@@ -1,0 +1,23 @@
+<script type="text/javascript">
+function deepEqual(value1, value2) {
+  if (value1 === value2) return true;
+  
+  if (value1 == null || typeof value1 != "object" ||
+      value2 == null || typeof value2 != "object")
+    return false;
+  
+  var propsInval1 = 0; 
+  var propsInval2 = 0;
+
+  for (var prop in value1)
+    propsInval1 += 1;
+
+  for (var prop in value2) {
+    propsInval2 += 1;
+    if (!(prop in value1) || !deepEqual(value1[prop], value2[prop]))
+      return false;
+  }
+
+  return propsInval1 == propsInval2;
+}
+</script>
